@@ -10,10 +10,12 @@ function App() {
   const RIGHT_ARROW = 39;
 
   const [data, setData] = useState([
-    [ 0,  0 , 0 , 0  ],
-    [ 0,  0 , 0 , 0  ],
-    [ 0,  0 , 0 , 0  ],
-    [ 0,  0 , 0 , 0  ],
+    [ 0,  0 , 0 , 0 ,0,0 ],
+    [ 0,  0 , 0 , 0 ,0,0 ],
+    [ 0,  0 , 0 , 0 ,0,0 ],
+    [ 0,  0 , 0 , 0 ,0,0 ],
+    [ 0,  0 , 0 , 0 ,0,0 ],
+    [ 0,  0 , 0 , 0 ,0,0 ],
   ]);
 
   const [gameOver, setGameOver] = useState(false);
@@ -66,7 +68,7 @@ function App() {
     let oldGrid = data;
     let newArray = cloneDeep(data);
 
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < 6; i++) {
       let b = newArray[i];
       let slow = 0;
       let fast = 1;
@@ -112,7 +114,7 @@ function App() {
     let oldData = data;
     let newArray = cloneDeep(data);
 
-    for (let i = 3; i >= 0; i--) {
+    for (let i = 5; i >= 0; i--) {
       let b = newArray[i];
       let slow = b.length - 1;
       let fast = slow - 1;
@@ -158,7 +160,7 @@ function App() {
     console.log(data);
     let b = cloneDeep(data);
     let oldData = JSON.parse(JSON.stringify(data));
-    for (let i =3; i >= 0; i--) {
+    for (let i =5; i >= 0; i--) {
       let slow = b.length - 1;
       let fast = slow - 1;
       while (slow > 0) {
@@ -202,7 +204,7 @@ function App() {
     console.log("swipe up");
     let b = cloneDeep(data);
     let oldData = JSON.parse(JSON.stringify(data));
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < 6; i++) {
       let slow = 0;
       let fast = 1;
       while (slow < 4) {
