@@ -44,8 +44,10 @@ function App() {
         break;
       }
 
-      let rand1 = Math.floor(Math.random() * 4);
-      let rand2 = Math.floor(Math.random() * 4);
+      const rows = newGrid.length;
+      const cols = newGrid[0].length;
+      let rand1 = Math.floor(Math.random() * rows);
+      let rand2 = Math.floor(Math.random() * cols);
       attempts++;
       if (newGrid[rand1][rand2] === 0) {
         newGrid[rand1][rand2] = Math.random() > 0.5 ? 2 : 4;
@@ -68,12 +70,13 @@ function App() {
     let oldGrid = data;
     let newArray = cloneDeep(data);
 
-    for (let i = 0; i < 6; i++) {
+    const gridSize = newArray.length;
+    for (let i = 0; i < gridSize; i++) {
       let b = newArray[i];
       let slow = 0;
       let fast = 1;
-      while (slow < 4) {
-        if (fast === 4) {
+      while (slow < gridSize) {
+        if (fast === gridSize) {
           fast = slow + 1;
           slow++;
           continue;
@@ -114,7 +117,8 @@ function App() {
     let oldData = data;
     let newArray = cloneDeep(data);
 
-    for (let i = 5; i >= 0; i--) {
+    const gridSize = newArray.length;
+    for (let i = gridSize - 1; i >= 0; i--) {
       let b = newArray[i];
       let slow = b.length - 1;
       let fast = slow - 1;
@@ -160,7 +164,8 @@ function App() {
     console.log(data);
     let b = cloneDeep(data);
     let oldData = JSON.parse(JSON.stringify(data));
-    for (let i =5; i >= 0; i--) {
+    const gridSize = b.length;
+    for (let i = gridSize - 1; i >= 0; i--) {
       let slow = b.length - 1;
       let fast = slow - 1;
       while (slow > 0) {
@@ -204,11 +209,12 @@ function App() {
     console.log("swipe up");
     let b = cloneDeep(data);
     let oldData = JSON.parse(JSON.stringify(data));
-    for (let i = 0; i < 6; i++) {
+    const gridSize = b.length;
+    for (let i = 0; i < gridSize; i++) {
       let slow = 0;
       let fast = 1;
-      while (slow < 4) {
-        if (fast === 4) {
+      while (slow < gridSize) {
+        if (fast === gridSize) {
           fast = slow + 1;
           slow++;
           continue;
@@ -280,10 +286,12 @@ function App() {
   const resetGame = () => {
     setGameOver(false);
     const emptyGrid = [
-      [0, 0, 0, 0],
-      [0, 0, 0, 0],
-      [0, 0, 0, 0],
-      [0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0],
     ];
 
     addNumber(emptyGrid);
